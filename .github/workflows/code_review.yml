@@ -33,11 +33,13 @@ jobs:
         run: |
           cd CodeReviewerAgent
           uv venv
+          source .venv/bin/activate
           uv pip install .
 
       - name: Run Agent
         run: |
-          source .venv/bin/activate
+          pwd
+          ls -la
           python CodeReviewerAgent/cli.py --repo .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
