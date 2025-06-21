@@ -5,12 +5,9 @@ description = "An AI agent that reviews code changes via GitHub Actions"
 authors = [{name = "João Pedro", email = "you@example.com"}]
 requires-python = ">=3.10"
 dependencies = [
-    "langchain>=0.1.0",
     "gitpython>=3.1",
     "pydantic>=2",
     "tqdm",
-    # "ollama",  # Uncomment if/when using
-    # "openai>=1.30",
     "requests>=2.32.4",
     "ollama-python>=0.1.2",
     "langchain-openai>=0.3.24",
