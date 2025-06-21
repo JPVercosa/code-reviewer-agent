@@ -19,7 +19,7 @@ class DiffReader:
     def run(self) -> List[DiffChunk]:
 
         # Check if .git exists
-        if not self.repo.git_dir.exists():
+        if not Path(self.repo.git_dir).exists():
             raise FileNotFoundError("No .git directory found")
 
         head = self.repo.head.commit
