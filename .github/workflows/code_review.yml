@@ -14,10 +14,10 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v4
 
-      - name: Checkout CodeReviewerAgent
+      - name: Checkout code-reviewer-agent
         uses: actions/checkout@v4
         with:
-          repository: JPVercosa/CodeReviewerAgent
+          repository: JPVercosa/code-reviewer-agent
           path: CodeReviewerAgent
           token: ${{ secrets.GITHUB_TOKEN }}
 
