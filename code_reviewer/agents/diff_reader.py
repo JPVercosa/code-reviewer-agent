@@ -17,6 +17,11 @@ class DiffReader:
         self.repo = Repo(repo_dir)
 
     def run(self) -> List[DiffChunk]:
+
+        # Check if .git exists
+        if not self.repo.git_dir.exists():
+            raise FileNotFoundError("No .git directory found")
+
         head = self.repo.head.commit
         parent = head.parents[0] if head.parents else None
         diff = head.diff(parent, create_patch=True)
