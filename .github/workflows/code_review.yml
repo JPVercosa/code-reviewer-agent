@@ -29,17 +29,12 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v1
 
-      - name: Install dependencies
+      - name: Install dependencies system-wide
         run: |
-          cd CodeReviewerAgent
-          uv venv
-          source .venv/bin/activate
-          uv pip install .
+          uv pip install --system ./CodeReviewerAgent
 
       - name: Run Agent
         run: |
-          pwd
-          ls -la
           python CodeReviewerAgent/cli.py --repo .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
