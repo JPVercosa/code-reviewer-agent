@@ -1,0 +1,48 @@
+name: AI Code Review
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+
+      - name: Checkout CodeReviewerAgent
+        uses: actions/checkout@v4
+        with:
+          repository: JPVercosa/CodeReviewerAgent
+          path: CodeReviewerAgent
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install uv
+        uses: supplypike/setup-bin@v3
+        with:
+          name: uv
+          version: latest
+
+      - name: Install dependencies
+        run: |
+          cd CodeReviewerAgent
+          uv pip install .
+
+      - name: Run Agent
+        run: |
+          python CodeReviewerAgent/cli.py --repo .
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          LLM_PROVIDER: openai
+          LLM_MODEL: gpt-4o-mini
