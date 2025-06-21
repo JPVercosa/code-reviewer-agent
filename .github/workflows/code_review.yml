@@ -33,7 +33,7 @@ jobs:
         run: |
           cd CodeReviewerAgent
           uv venv
-          uv pip install .
+          uv pip install -r pyproject.toml
 
       - name: Run Agent
         run: |

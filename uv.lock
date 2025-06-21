@@ -290,6 +290,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "gitpython" },
+    { name = "langchain" },
     { name = "langchain-community" },
     { name = "langchain-core" },
     { name = "langchain-openai" },
@@ -302,6 +303,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "gitpython", specifier = ">=3.1" },
+    { name = "langchain", specifier = ">=0.1.0" },
     { name = "langchain-community", specifier = ">=0.3.26" },
     { name = "langchain-core", specifier = ">=0.3.66" },
     { name = "langchain-openai", specifier = ">=0.3.24" },
