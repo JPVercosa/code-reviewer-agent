@@ -19,6 +19,7 @@ jobs:
         with:
           repository: JPVercosa/CodeReviewerAgent
           path: CodeReviewerAgent
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
