@@ -27,10 +27,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install uv
-        uses: supplypike/setup-bin@v3
-        with:
-          name: uv
-          version: latest
+        uses: astral-sh/setup-uv@v1
 
       - name: Install dependencies
         run: |
